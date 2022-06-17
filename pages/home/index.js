@@ -75,6 +75,9 @@ export default function HomeScreen() {
   const [sortkey, setSortKey] = useState('');
   const [sortorder, setSortOrder] = useState('');
   const [loaded, setLoaded] = useState(false);
+  const trade_data = [
+    "ETHEREUM", "BITCOIN", "SHIB", "DOT", "GALA"
+  ];    
   const trading_init = [
     {
       image: "https://upload-hotbit-io.oss-ap-southeast-1.aliyuncs.com/files/ETH_1_LOGO.png",
@@ -160,12 +163,7 @@ export default function HomeScreen() {
     const localToken = localStorage.getItem('token');
     setToken(localToken);
 
-    let trade_list = new Map();
-    trade_list.set('ETHUSDT','Ethereum')
-              .set('BTCUSDT','Bitcoin')
-              .set('SHIBUSDT','SHIB')
-              .set('DOTUSDT','DOT')
-              .set('GALAUSDT','Gala');        
+         
 
     const trading_list = ['ETHUSDT', 'BTCUSDT', 'SHIBUSDT', 'DOTUSDT', 'GALAUSDT'];
     // if (!localToken) {
@@ -2285,7 +2283,7 @@ export default function HomeScreen() {
                   </tr>
                 </thead>
                 <tbody>
-                  {loaded && sortedCoins.map(item=>(
+                  {loaded && sortedCoins.map((i, item)=>(
                       <OverlayTrigger
                         placement="bottom"
                         overlay={renderTooltip(item.pair)}
@@ -2294,7 +2292,7 @@ export default function HomeScreen() {
                           <td className='trading-name'>
                             <div style={{display: 'flex'}}>
                               <img src={item.image} alt=''/>
-                              <strong>{trade_list.get(item.name)}</strong>
+                              <strong>{trade_data[i]}</strong>
                             </div>
                           </td>
                           <td className='trading-change'>{item.c}</td>
