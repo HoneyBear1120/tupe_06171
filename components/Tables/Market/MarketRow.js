@@ -109,7 +109,7 @@ const MarketRow = memo(({ item, index, multiple, unit }) => {
           </strong>
         </td>
         <td className='kks_text_center'>
-          <strong className={price > 0 ? 'green': (price == '0.00' ? 'gray':'red')}>{price > 0 ? "+" : ""} {price}%</strong>
+          <strong className={price > 0 ? 'green': (price == '0.00' ? 'gray':'red')}>{price > 0 ? "" : ""} {price}%</strong>
         </td>
         <td className='kks_text_center'>{round(item.high_24h)}</td>
         <td className='kks_text_center'>{round(item.low_24h)}</td>

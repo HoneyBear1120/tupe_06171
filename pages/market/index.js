@@ -182,11 +182,12 @@ const MarketScreen = ({coins}) => {
                 value += '' + (array[j] != null ? array[j] : '');
               }
               let result = num + '.' + value;
-              item.price_change_percentage_24h = result;
+              item.price_change_percentage_24h = parseFloat(result);
             }
           })
         })
         setData(datalist);
+        console.log(datalist);
       })
   };
 
@@ -300,9 +301,9 @@ const MarketScreen = ({coins}) => {
   };
 
   const filteredCoins = data.filter(coin =>
-    (coin.name !== undefined && coin.name.toLowerCase().includes(keyword.toLowerCase()) || (coin.symbol !== undefined && coin.symbol.toLowerCase().includes(keyword.toLowerCase()))) && coin.name != "Tenset"
+    (
+      coin.name !== undefined && coin.name.toLowerCase().includes(keyword.toLowerCase()) || (coin.symbol !== undefined && coin.symbol.toLowerCase().includes(keyword.toLowerCase()))) && coin.name != "Tenset"
   );
-
 
   function onChangePage (pager) {
     if (!isNil(pager)) setCurrentPage(pager.currentPage);
@@ -342,7 +343,7 @@ const MarketScreen = ({coins}) => {
   };
 
   const sortedCoins = orderBy(filteredCoins, sortkey, sortorder);
-
+  
   return (
     <>
       {/* {loaded && ( */}
@@ -362,17 +363,29 @@ const MarketScreen = ({coins}) => {
             <table className='data-table'>
               <thead>
                 <tr>
-                  <th className='markFavorite trading-change' style={{width:"5%"}}>
+                  <th className='markFavorite kks_text_center' style={{width:"5%"}}>
                     {/* <i className='markFavorite-icon material-icons'>star_border</i> */}
                     <span style={{marginLeft: 35}}>#</span>
                   </th>
-                  <th className='trading-name' style={{width:"5%"}}><span style={{marginRight: 15}}>Coin</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'symbol' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('symbol', 'asc')}/><ArrowDropDownIcon style={sortkey === 'symbol' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('symbol', 'desc')}/></span></th>
-                  <th className='trading-name' style={{width:"10%"}}>&nbsp;</th>
-                  <th className='trading-change' style={{width:"14%"}}><span style={{marginRight: 15}}>Price</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'current_price' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('current_price', 'asc')}/><ArrowDropDownIcon style={sortkey === 'current_price' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('current_price', 'desc')}/></span></th>
-                  <th className='trading-change' style={{width:"14%"}}><span style={{marginRight: 15}}>24H Change</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'price_change_percentage_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('price_change_percentage_24h', 'asc')}/><ArrowDropDownIcon style={sortkey === 'price_change_percentage_24h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('price_change_percentage_24h', 'desc')}/></span></th>
-                  <th className='trading-change' style={{width:"14%"}}><span style={{marginRight: 15}}>24H High</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'high_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('high_24h', 'asc')}/><ArrowDropDownIcon style={sortkey === 'high_24h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('high_24h', 'desc')}/></span></th>
-                  <th className='trading-change' style={{width:"14%"}}><span style={{marginRight: 15}}>24H Low</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'low_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('low_24h', 'asc')}/><ArrowDropDownIcon style={sortkey === 'low_24h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('low_24h', 'desc')}/></span></th>
-                  <th className='trading-change' style={{width:"14%"}}><span style={{marginRight: 15}}>24H Volume</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'total_volume' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('total_volume', 'asc')}/><ArrowDropDownIcon style={sortkey === 'total_volume' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('total_volume', 'desc')}/></span></th>
+                  <th className='kks_text_center' style={{width:"5%"}}>
+                    <span style={{marginRight: 15}}>Coin</span>
+                    <span style={arrow}>
+                      <ArrowDropUpIcon style={sortkey === 'symbol' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('symbol', 'asc')}/>
+                      <ArrowDropDownIcon style={sortkey === 'symbol' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('symbol', 'desc')}/>
+                    </span>
+                  </th>
+                  <th className='kks_text_center' style={{width:"10%"}}>&nbsp;</th>
+                  <th className='kks_text_center' style={{width:"14%"}}><span style={{marginRight: 15}}>Price</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'current_price' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('current_price', 'asc')}/><ArrowDropDownIcon style={sortkey === 'current_price' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('current_price', 'desc')}/></span></th>
+                  <th className='kks_text_center' style={{width:"14%"}}>
+                    <span style={{marginRight: 15}}>24H Change</span>
+                    <span style={arrow}>
+                      <ArrowDropUpIcon style={sortkey === 'price_change_percentage_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('price_change_percentage_24h', 'asc')}/>
+                      <ArrowDropDownIcon style={sortkey === 'price_change_percentage_24h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('price_change_percentage_24h', 'desc')}/>
+                    </span>
+                  </th>
+                  <th className='kks_text_center' style={{width:"14%"}}><span style={{marginRight: 15}}>24H High</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'high_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('high_24h', 'asc')}/><ArrowDropDownIcon style={sortkey === 'high_24h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('high_24h', 'desc')}/></span></th>
+                  <th className='kks_text_center' style={{width:"14%"}}><span style={{marginRight: 15}}>24H Low</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'low_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('low_24h', 'asc')}/><ArrowDropDownIcon style={sortkey === 'low_24h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('low_24h', 'desc')}/></span></th>
+                  <th className='kks_text_center' style={{width:"14%"}}><span style={{marginRight: 15}}>24H Volume</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'total_volume' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('total_volume', 'asc')}/><ArrowDropDownIcon style={sortkey === 'total_volume' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('total_volume', 'desc')}/></span></th>
                 </tr>
               </thead>
               <tbody>
