@@ -360,18 +360,17 @@ const MarketScreen = ({coins}) => {
           
           {sortedCoins && sortedCoins.length > 0 && (
             <table className='trading-table'>
-            <thead>
-              <tr>
-                <th className="trading-name"><span style={{marginRight: 15}}>Name</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'name' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('name', 'asc')}/><ArrowDropDownIcon style={sortkey === 'name' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('name', 'desc')}/></span></th>
-                <th className="trading-change"><span style={{marginRight: 15}}>PRICE($)</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'c' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('c', 'asc')}/><ArrowDropDownIcon style={sortkey === 'c' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('c', 'desc')}/></span></th>
-                {/* <th className="trading-change">Change</th> */}
-                <th className="trading-percent"><span style={{marginRight: 15}}>CHANGE</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'P' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('P', 'asc')}/><ArrowDropDownIcon style={sortkey === 'P' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('P', 'desc')}/></span></th>
-                <th className="trading-change"><span style={{marginRight: 15}}>Open</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'o' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('o', 'asc')}/><ArrowDropDownIcon style={sortkey === 'o' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('o', 'desc')}/></span></th>
-                <th className="trading-change"><span style={{marginRight: 15}}>High</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('h', 'asc')}/><ArrowDropDownIcon style={sortkey === 'h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('h', 'desc')}/></span></th>
-                <th className="trading-change"><span style={{marginRight: 15}}>Low</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'l' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('l', 'asc')}/><ArrowDropDownIcon style={sortkey === 'l' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('l', 'desc')}/></span></th>
-                <th className="trading-change"><span style={{marginRight: 15}}>Prev</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'a' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('a', 'asc')}/><ArrowDropDownIcon style={sortkey === 'a' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('a', 'desc')}/></span></th>
-              </tr>
-            </thead>
+              <thead>
+                <tr>
+                  <th className="trading-name"><span style={{marginRight: 15}}>Coin</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'symbol' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('name', 'asc')}/><ArrowDropDownIcon style={sortkey === 'name' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('name', 'desc')}/></span></th>
+                  <th className='kks_text_center' style={{width:"10%"}}>&nbsp;</th>
+                  <th className="trading-change"><span style={{marginRight: 15}}>Price</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'current_price' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('c', 'asc')}/><ArrowDropDownIcon style={sortkey === 'c' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('c', 'desc')}/></span></th>
+                  <th className="trading-percent"><span style={{marginRight: 15}}>24Hr Change</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'price_change_percentage_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('P', 'asc')}/><ArrowDropDownIcon style={sortkey === 'P' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('P', 'desc')}/></span></th>
+                  <th className="trading-change"><span style={{marginRight: 15}}>24Hr High</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'high_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('o', 'asc')}/><ArrowDropDownIcon style={sortkey === 'o' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('o', 'desc')}/></span></th>
+                  <th className="trading-change"><span style={{marginRight: 15}}>24Hr Low</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'low_24h' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('h', 'asc')}/><ArrowDropDownIcon style={sortkey === 'h' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('h', 'desc')}/></span></th>
+                  <th className="trading-change"><span style={{marginRight: 15}}>24Hr Volume</span><span style={arrow}><ArrowDropUpIcon style={sortkey === 'total_volume' && sortorder === 'asc' ? selectedArrowUp : arrowup} onClick={()=>sort('a', 'asc')}/><ArrowDropDownIcon style={sortkey === 'a' && sortorder === 'desc' ? selectedArrowDown : arrowdown} onClick={()=>sort('a', 'desc')}/></span></th>
+                </tr>
+              </thead>
               <tbody>
                 {loaded && sortedCoins.map((item, index) => (
                   <>
