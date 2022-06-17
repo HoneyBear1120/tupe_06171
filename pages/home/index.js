@@ -129,19 +129,19 @@ export default function HomeScreen() {
         originalName: 'Indices',
         symbols: [
           {
-            name: 'COINBASE:ETHUSD',
+            name: 'COINBASE:ETHEREUM',
           },
           {
-            name: 'BITSTAMP:BTCUSD',
+            name: 'BITSTAMP:BITCOIN',
           },
           {
-            name: 'BINANCE:SHIBUSDT',
+            name: 'BINANCE:SHIBU',
           },
           {
-            name: 'BINANCE:DOTUSDT',
+            name: 'BINANCE:DOT',
           },
           {
-            name: 'BINANCE:GALAUSDT',
+            name: 'BINANCE:GALA',
           },
         ],
       },
