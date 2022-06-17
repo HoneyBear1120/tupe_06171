@@ -2283,7 +2283,7 @@ export default function HomeScreen() {
                   </tr>
                 </thead>
                 <tbody>
-                  {loaded && sortedCoins.map((i, item)=>(
+                  {loaded && sortedCoins.map((item, i)=>(
                       <OverlayTrigger
                         placement="bottom"
                         overlay={renderTooltip(item.pair)}
