@@ -129,19 +129,19 @@ export default function HomeScreen() {
         originalName: 'Indices',
         symbols: [
           {
-            name: 'COINBASE:ETHEREUM',
+            name: 'COINBASE:ETHUSD',
           },
           {
-            name: 'BITSTAMP:BITCOIN',
+            name: 'BITSTAMP:BTCUSD',
           },
           {
-            name: 'BINANCE:SHIBU',
+            name: 'BINANCE:SHIBUSDT',
           },
           {
-            name: 'BINANCE:DOT',
+            name: 'BINANCE:DOTUSDT',
           },
           {
-            name: 'BINANCE:GALA',
+            name: 'BINANCE:GALAUSDT',
           },
         ],
       },
@@ -160,7 +160,12 @@ export default function HomeScreen() {
     const localToken = localStorage.getItem('token');
     setToken(localToken);
 
-    const trading_list = ['ETHUSDT', 'BTCUSDT', 'SHIBUSDT', 'DOTUSDT', 'GALAUSDT'];
+    let trade_list = new Map();
+    trade_list.set('ETHUSDT','Ethereum')
+              .set('BTCUSDT','Bitcoin')
+              .set('SHIBUSDT','SHIB')
+              .set('DOTUSDT','DOT')
+              .set('GALAUSDT','Gala');        
 
     // if (!localToken) {
     //   router.push('/');
@@ -2288,7 +2293,7 @@ export default function HomeScreen() {
                           <td className='trading-name'>
                             <div style={{display: 'flex'}}>
                               <img src={item.image} alt=''/>
-                              <strong>{item.name}</strong>
+                              <strong>{trade_list.get(item.name)}</strong>
                             </div>
                           </td>
                           <td className='trading-change'>{item.c}</td>
