@@ -167,6 +167,7 @@ export default function HomeScreen() {
               .set('DOTUSDT','DOT')
               .set('GALAUSDT','Gala');        
 
+    const trading_list = ['ETHUSDT', 'BTCUSDT', 'SHIBUSDT', 'DOTUSDT', 'GALAUSDT'];
     // if (!localToken) {
     //   router.push('/');
     // }
