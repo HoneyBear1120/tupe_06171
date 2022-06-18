@@ -251,7 +251,7 @@ const MarketScreen = ({coins}) => {
       };
       ws.onmessage = function (event) {
         const json = JSON.parse(event.data);
-        
+        console.log(json);
         try {
           if (json.FROMSYMBOL !== undefined) {
             const new_data = cloneDeep(data);
